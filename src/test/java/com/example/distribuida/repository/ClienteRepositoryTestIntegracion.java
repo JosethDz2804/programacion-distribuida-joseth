@@ -8,8 +8,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.TestPropertySource;
 
+import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
@@ -19,6 +19,30 @@ public class ClienteRepositoryTestIntegracion {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Test
+    public void testClienteFindAll() {
+        List<Cliente> cliente = clienteRepository.findAll();
+        assertNotNull(cliente);
+        assertTrue(cliente.size() > 0);
+        for (Cliente item : cliente) {
+            System.out.println(item.toString());
+
+        }
+    }
+
+
+    @Test
+    public void testClienteFinOne(){
+        Optional<Cliente> cliente = clienteRepository.findById(1);
+        assertNotNull(cliente.isPresent());
+        assertEquals("Puro",cliente.orElse(null).getNombre());
+        assertEquals("Hueso",cliente.orElse(null).getApellido());
+        System.out.println(cliente);
+
+    }
+
+
 
     @Test
     @Commit
