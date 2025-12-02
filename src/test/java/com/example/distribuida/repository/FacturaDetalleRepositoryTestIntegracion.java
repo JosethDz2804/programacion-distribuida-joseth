@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Commit;
-
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
@@ -22,11 +20,9 @@ public class FacturaDetalleRepositoryTestIntegracion {
         FacturaDetalle detalle = new FacturaDetalle();
         detalle.setCantidad(2);
         detalle.setSubtotal(50.0);
-        detalle.setIdFactura(1); // Debe existir factura
-        detalle.setIdLibro(1);   // Debe existir libro
-
+        detalle.setIdFactura(1);
+        detalle.setIdLibro(1);
         FacturaDetalle guardada = facturaDetalleRepository.save(detalle);
-
         assertNotNull(guardada.getIdFacturaDetalle());
     }
 
