@@ -5,7 +5,6 @@ import com.example.distribuida.model.Categoria;
 import com.example.distribuida.Servicelmpl.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

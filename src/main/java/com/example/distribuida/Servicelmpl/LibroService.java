@@ -1,7 +1,6 @@
 package com.example.distribuida.Servicelmpl;
 
 import com.example.distribuida.model.Libro;
-
 import java.util.List;
 import java.util.Optional;
 
