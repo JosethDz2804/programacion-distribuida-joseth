@@ -48,4 +48,5 @@ public class ClienteServiceImpl implements ClienteService {
     public void delete(Integer id) {
         if (repository.existsById(id)) repository.deleteById(id);
     }
+
 }
