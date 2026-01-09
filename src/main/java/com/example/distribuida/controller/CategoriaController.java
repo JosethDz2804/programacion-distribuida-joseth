@@ -1,13 +1,11 @@
 package com.example.distribuida.controller;
 
-
 import com.example.distribuida.Servicelmpl.CategoriaService;
 import com.example.distribuida.model.Autor;
 import com.example.distribuida.model.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +31,13 @@ public class CategoriaController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(categoria.orElse(null));
+    }
+
+    // CREAR
+    @PostMapping
+    public ResponseEntity<Categoria> save(@RequestBody Categoria categoria){
+        Categoria categoriaNueva = categoriaService.save(categoria);
+        return ResponseEntity.ok(categoriaNueva);
     }
 
     // ACTUALIZAR
