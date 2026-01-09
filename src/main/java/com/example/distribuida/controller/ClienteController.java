@@ -17,12 +17,14 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    //LISTAR TODOS
     @GetMapping
     public ResponseEntity<List<Cliente>> findAll(){
         List<Cliente> clientes = clienteService.findAll();
         return ResponseEntity.ok(clientes);
     }
 
+    //BUSCAR POR ID
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> findOne(@PathVariable int id){
         Optional<Cliente> cliente = clienteService.findById(id);
@@ -32,12 +34,14 @@ public class ClienteController {
         return ResponseEntity.ok(cliente.orElse(null));
     }
 
+    //CREAR
     @PostMapping
     public  ResponseEntity<Cliente> save(@RequestBody Cliente cliente){
         Cliente clienteNuevo = clienteService.save(cliente);
         return ResponseEntity.ok(clienteNuevo);
     }
 
+    //ACTUALIZAR
     @PutMapping("/{id}")
     public ResponseEntity<Cliente>update(@PathVariable int id,@RequestBody Cliente cliente){
         Cliente clienteActualizado = clienteService.update(id, cliente);
@@ -47,6 +51,7 @@ public class ClienteController {
         return ResponseEntity.ok(clienteActualizado);
     }
 
+    //ELIMINAR
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id){
         clienteService.delete(id);
