@@ -1,12 +1,10 @@
 package com.example.distribuida.controller;
 
-
 import com.example.distribuida.Servicelmpl.FacturaService;
 import com.example.distribuida.model.Factura;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +55,4 @@ public class FacturaController {
         facturaService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }

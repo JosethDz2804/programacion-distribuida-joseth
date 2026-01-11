@@ -2,11 +2,9 @@ package com.example.distribuida.controller;
 
 import com.example.distribuida.Servicelmpl.AutorService;
 import com.example.distribuida.model.Autor;
-import com.example.distribuida.model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -57,5 +55,4 @@ public class AutorController {
         autorService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
 }

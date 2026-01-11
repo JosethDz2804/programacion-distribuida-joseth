@@ -1,6 +1,5 @@
 package com.example.distribuida.controller;
 
-
 import com.example.distribuida.Servicelmpl.FacturaDetalleService;
 import com.example.distribuida.model.FacturaDetalle;
 import org.springframework.beans.factory.annotation.Autowired;

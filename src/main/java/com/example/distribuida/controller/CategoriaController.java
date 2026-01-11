@@ -1,7 +1,6 @@
 package com.example.distribuida.controller;
 
 import com.example.distribuida.Servicelmpl.CategoriaService;
-import com.example.distribuida.model.Autor;
 import com.example.distribuida.model.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
