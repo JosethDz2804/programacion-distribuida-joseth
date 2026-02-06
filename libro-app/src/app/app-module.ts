@@ -15,6 +15,8 @@ import{MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LibroComponent } from './components/libro/libro';
+import {  AutorComponent } from './components/autor/autor';
+import {  CategoriaComponent } from './components/categoria/categoria';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { LibroComponent } from './components/libro/libro';
     App,
     ClienteComponent,
     LibroComponent,
+    AutorComponent,
+    CategoriaComponent,
   ],
   imports: [
     BrowserModule,
