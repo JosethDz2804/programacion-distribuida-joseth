@@ -30,5 +30,17 @@ export class LibroService {
   delete(id: number): Observable<void>{
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+  uploadPortada(file: File, oldImage?: string) {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  if (oldImage) {
+    formData.append('oldImage', oldImage);
+  }
+
+  return this.http.post<any>('http://localhost:8080/api/upload-portada', formData);
+}
+
   
 }

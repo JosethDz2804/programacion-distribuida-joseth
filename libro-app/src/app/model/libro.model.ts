@@ -11,12 +11,14 @@ export interface Libro{
     fechaPublicacion: Date
     descripcion: string
     tipoPasta: string
-    iSBN: string
+    isbn: string
     numEjemplares: number
     portada: string
     presentacion: string
-    categoria: Categoria
-    autor: Autor
+    precio: number
+
+    idAutor: number
+    idCategoria: number
 
     [key: string]: any;
 

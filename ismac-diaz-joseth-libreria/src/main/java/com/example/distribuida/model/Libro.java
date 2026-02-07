@@ -1,6 +1,7 @@
 package com.example.distribuida.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "libro")
@@ -27,7 +28,7 @@ public class Libro {
     private String idioma;
 
     @Column(name = "fecha_publicacion")
-    private String fechaPublicacion;
+    private LocalDate fechaPublicacion;
 
     @Column(name = "descripcion")
     private String descripcion;
@@ -35,7 +36,7 @@ public class Libro {
     @Column(name = "tipo_pasta")
     private String tipoPasta;
 
-    @Column(name = "ISBN")
+    @Column(name = "isbn")
     private String isbn;
 
     @Column(name = "num_ejemplares")
@@ -58,6 +59,7 @@ public class Libro {
 
     public Libro() {}
 
+    // Getters y Setters
     public Integer getIdLibro() { return idLibro; }
     public void setIdLibro(Integer idLibro) { this.idLibro = idLibro; }
 
@@ -76,8 +78,8 @@ public class Libro {
     public String getIdioma() { return idioma; }
     public void setIdioma(String idioma) { this.idioma = idioma; }
 
-    public String getFechaPublicacion() { return fechaPublicacion; }
-    public void setFechaPublicacion(String fechaPublicacion) { this.fechaPublicacion = fechaPublicacion; }
+    public LocalDate getFechaPublicacion() { return fechaPublicacion; }
+    public void setFechaPublicacion(LocalDate fechaPublicacion) { this.fechaPublicacion = fechaPublicacion; }
 
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }

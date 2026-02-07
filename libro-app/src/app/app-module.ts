@@ -17,6 +17,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { LibroComponent } from './components/libro/libro';
 import {  AutorComponent } from './components/autor/autor';
 import {  CategoriaComponent } from './components/categoria/categoria';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatOptionModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -40,9 +45,16 @@ import {  CategoriaComponent } from './components/categoria/categoria';
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
+    MatDatepickerModule
   ],
   bootstrap: [App]
 })
