@@ -290,7 +290,8 @@
 
       <button mat-flat-button
               color="primary"
-              type="submit">
+              type="submit"
+              [disabled]="formLibro.invalid">
         {{ editar ? 'Actualizar' : 'Guardar' }}
       </button>
 

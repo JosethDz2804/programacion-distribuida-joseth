@@ -118,46 +118,61 @@ guardarLibro(): void {
   }
 }
 
-
 guardarDatosLibro(): void {
-
-  console.log("🔥 Entró a guardarDatosLibro");
-  console.log("📦 Datos:", this.libro);
-  console.log("✏️ editar:", this.editar);
-  console.log("🆔 idEditar:", this.idEditar);
 
   if (this.editar && this.idEditar !== null) {
 
-    console.log("➡️ Va a UPDATE");
-
     this.libroService.update(this.idEditar, this.libro)
-      .subscribe(res => {
+      .subscribe({
+        next: (res) => {
 
-        console.log("✅ Update OK", res);
-        alert("Update OK");
+          Swal.fire({
+            icon: 'success',
+            title: 'Actualizado correctamente',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            this.reset(); // 👈 limpia y cierra modal
+          });
 
-      }, error => {
-
-        console.error("❌ Error update:", error);
+        },
+        error: (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al actualizar',
+            text: 'Ocurrió un problema'
+          });
+        }
       });
 
   } else {
 
-    console.log("➡️ Va a SAVE");
-
     this.libroService.save(this.libro)
-      .subscribe(res => {
+      .subscribe({
+        next: (res) => {
 
-        console.log("✅ Save OK", res);
-        alert("Save OK");
+    Swal.fire({
+    icon: 'success',
+    title: 'Guardado correctamente',
+    confirmButtonText: 'Aceptar'
+      }).then((result) => {
+      if (result.isConfirmed) {
+      this.reset();
+      }
+    });
 
-      }, error => {
 
-        console.error("❌ Error save:", error);
+        },
+        error: (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al guardar',
+            text: 'Ocurrió un problema'
+          });
+        }
       });
   }
 }
-
 
   reset(): void {
     this.libro = {} as Libro;
@@ -174,17 +189,33 @@ guardarDatosLibro(): void {
 delete(libro: Libro): void {
   Swal.fire({
     title: '¿Desea eliminar el libro?',
+    text: 'Esta acción no se puede deshacer',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'Sí'
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
   }).then(result => {
+
     if (result.isConfirmed) {
+
       this.libroService.delete(libro.idLibro).subscribe(() => {
-        this.findAll();
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Eliminado correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+        this.findAll(); // 🔥 refresca tabla
       });
+
     }
   });
 }
+
 
   friltroLibro(event: Event): void {
     const filtro = (event.target as HTMLInputElement).value;
@@ -253,7 +284,21 @@ seleccionarImagen(event: any): void {
     });
   }
 
-  cerrarModal(): void {
-    this.dialog.closeAll();
-  }
+cerrarModal(): void {
+
+  Swal.fire({
+    title: '¿Desea cancelar?',
+    text: 'Los cambios no guardados se perderán',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, salir',
+    cancelButtonText: 'Seguir editando'
+  }).then(result => {
+    if (result.isConfirmed) {
+      this.reset();
+    }
+  });
+
+}
+
 }

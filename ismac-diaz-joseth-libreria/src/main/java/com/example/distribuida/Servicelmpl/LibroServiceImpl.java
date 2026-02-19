@@ -44,7 +44,9 @@ public class LibroServiceImpl implements LibroService {
         li.setTipoPasta(libro.getTipoPasta());
         li.setIsbn(libro.getIsbn());
         li.setNumEjemplares(libro.getNumEjemplares());
-        li.setPortada(libro.getPortada());
+        if (libro.getPortada() != null) {
+            li.setPortada(libro.getPortada());
+        }
         li.setPresentacion(libro.getPresentacion());
         li.setPrecio(libro.getPrecio());
         li.setIdCategoria(libro.getIdCategoria());
